@@ -14,14 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/")
+@RestController
 public class LibroControlador {
     @Autowired
     private LibroServicio servL; 
             
-    @PostMapping("/registroLibro")
+    @PostMapping("/libros/registroLibro")
     public String registroLibro(@RequestParam Long isbn,@RequestParam String titulo,@RequestParam Integer anio,
             @RequestParam Integer ejemplares,@RequestParam Integer ejemplaresPrestados,
             @RequestParam Integer ejemplaresRestantes, @RequestParam String idAutor,@RequestParam String idEditorial){
