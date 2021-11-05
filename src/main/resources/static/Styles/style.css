@@ -21,3 +21,10 @@ footer{
     color: white;
     text-align: center;
 }
+.form_aut{
+    border:1px solid black;
+    border-radius: 1rem;
+}
+h2{
+    text-align: center;
+}

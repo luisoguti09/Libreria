@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,7 @@
              Autores
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Registrar</a>
+              <a class="dropdown-item" th:href="@{/autor/registro}">Registrar</a>
               <a class="dropdown-item" href="autores.html">Mostrar</a>
               
             </div>
