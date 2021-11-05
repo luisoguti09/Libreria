@@ -24,7 +24,16 @@ footer{
 .form_aut{
     border:1px solid black;
     border-radius: 1rem;
+    width: 30rem;
+    height: 8rem;
 }
 h2{
     text-align: center;
+}
+
+.cont_form{
+    margin:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
