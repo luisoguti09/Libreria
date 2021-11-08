@@ -19,15 +19,7 @@ public class Editorial {
     private String nombre;
     private boolean alta;
 
-    public Editorial() {
-    }
-
-    public Editorial(String id, String nombre, boolean alta) {
-        this.id = id;
-        this.nombre = nombre;
-        this.alta = alta;
-    }
-
+  
     /**
      * @return the id
      */

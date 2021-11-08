@@ -6,7 +6,6 @@
 package com.libreria.Libreria.Controlador;
 
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
-import com.libreria.Libreria.Servicio.AutorServicio;
 import com.libreria.Libreria.Servicio.EditorialServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+
 /**
  *
  * @author Abi
@@ -23,7 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/editorial")
 public class EditorialControlador {
-      @Autowired
+
+    @Autowired(required = false)
     private EditorialServicio servE;
 
     @GetMapping("/registro")
@@ -36,12 +38,13 @@ public class EditorialControlador {
 
         try {
             servE.crearEditorial(nombre);
+             return "index.html";
         } catch (ExcepcionLibreria ex) {
-            modelo.put("error",ex.getMessage());
-           
+            modelo.put("error", ex.getMessage());
+
             return "insertarEditorial.html";
         }
 
-        return "index.html";
+       
     }
 }
