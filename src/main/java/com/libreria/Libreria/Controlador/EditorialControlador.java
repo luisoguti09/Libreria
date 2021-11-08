@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/editorial")
 public class EditorialControlador {
 
-  
-    private EditorialServicio servE=new EditorialServicio();
+    @Autowired(required = false)
+    private EditorialServicio servE;
 
     @GetMapping("/registro")
     public String registroLibro() {
@@ -38,12 +38,13 @@ public class EditorialControlador {
 
         try {
             servE.crearEditorial(nombre);
+             return "index.html";
         } catch (ExcepcionLibreria ex) {
             modelo.put("error", ex.getMessage());
 
             return "insertarEditorial.html";
         }
 
-        return "index.html";
+       
     }
 }

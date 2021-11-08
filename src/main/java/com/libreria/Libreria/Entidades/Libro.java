@@ -29,7 +29,7 @@ public class Libro {
     private Boolean alta;
     @ManyToOne
    private Autor autor;
-    @OneToOne
+    @ManyToOne
    private Editorial editorial;
 
     public Libro() {
