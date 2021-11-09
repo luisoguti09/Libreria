@@ -18,7 +18,11 @@ public class Editorial {
     private String id;
     private String nombre;
     private boolean alta;
-    
+
+  
+    /**
+     * @return the id
+     */
     public String getId() {
         return id;
     }
