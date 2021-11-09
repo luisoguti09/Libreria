@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Librería</title>
         <meta charset="UTF-8">
@@ -46,7 +46,7 @@ and open the template in the editor.
                             Editoriales
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/editorial/registro}">Registrar</a>
+                            <a class="dropdown-item" th:href="@{/editorial/registrar}">Registrar</a>
                             <a class="dropdown-item" href="editoriales.html">Mostrar</a>
 
                         </div>
@@ -58,7 +58,7 @@ and open the template in the editor.
         </header>
         <div class="cont_form">
             <div> <h2>Cargar Editorial</h2> </div>
-            <form th:action="@{/editorial/registro}" method="POST" class="form_aut">
+            <form th:action="@{/Editorial/registrar}" method="POST" class="form_aut">
                 <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
 
                 <label for="nombre">Nombre</label>

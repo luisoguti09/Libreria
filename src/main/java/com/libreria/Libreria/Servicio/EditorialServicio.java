@@ -10,47 +10,50 @@ import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
 import com.libreria.Libreria.Repository.EditorialRepo;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 public class EditorialServicio {
-    
-    @Autowired
+
+    @Autowired(required = false)
     private EditorialRepo edit;
-    
-    public void crearEditorial(String nombre) throws ExcepcionLibreria{
-       if(nombre.isEmpty()|| nombre == null){
-                throw new ExcepcionLibreria("Tenes que ingresar los dats pedidos salamin/a");
-            } 
-       Editorial editor = new Editorial();
-       editor.setNombre(nombre);
-       editor.setAlta(true);
-       edit.save(editor);
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+    public void crearEditorial(String nombre) throws ExcepcionLibreria {
+        if (nombre.isEmpty() || nombre == null) {
+            throw new ExcepcionLibreria("Tenes que ingresar los datos pedidos salamin/a");
+        }
+        Editorial editor = new Editorial();
+        editor.setNombre(nombre);
+        editor.setAlta(true);
+        edit.save(editor);
     }
-    public void modificarEditorial(String nombre, String Id) throws ExcepcionLibreria{
-      
-        if(nombre.isEmpty()|| nombre == null){
-                throw new ExcepcionLibreria("Tenes que ingresar los datos pedidos salamin/a");
-            }
-        
+
+    public void modificarEditorial(String nombre, String Id) throws ExcepcionLibreria {
+
+        if (nombre.isEmpty() || nombre == null) {
+            throw new ExcepcionLibreria("Tenes que ingresar los datos pedidos salamin/a");
+        }
+
         Optional<Editorial> respuesta = edit.findById(Id);
-        
-        if(respuesta.isPresent()){
+
+        if (respuesta.isPresent()) {
             Editorial edi = respuesta.get();
             edi.setNombre(nombre);
             edit.save(edi);
-        }else{
+        } else {
             throw new ExcepcionLibreria("No existe la Editorial ingresada");
         }
     }
-    
-    public void eliminarEditorial(String Id) throws ExcepcionLibreria{
-        
+
+    public void deshabilitarEditorial(String Id) throws ExcepcionLibreria {
+
         Optional<Editorial> respuesta = edit.findById(Id);
-        if(respuesta.isPresent()){
+        if (respuesta.isPresent()) {
             Editorial edi = respuesta.get();
             edi.setAlta(false);
             edit.save(edi);
-        }else{
+        } else {
             throw new ExcepcionLibreria("No existe la Editorial ingresada");
         }
     }
