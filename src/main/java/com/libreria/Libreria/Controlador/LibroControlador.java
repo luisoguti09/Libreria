@@ -40,7 +40,7 @@ public class LibroControlador {
             servL.crearLibro(isbn, titulo, anio, ejemplares,
                     ejemplaresPrestados, ejemplaresRestantes,
                     autor, editorial);
-            return "index.html";
+
         } catch (ExcepcionLibreria ex) {
             m.put("error", ex.getMessage());
             m.put("isbn", isbn);
@@ -53,7 +53,8 @@ public class LibroControlador {
             m.put("editorial", editorial);
             return "registroLibro.html";
         }
-
+        m.put("mensaje", "El libro se registró de manera satisfactoria.");
+        return "exito.html";
     }
 
 }

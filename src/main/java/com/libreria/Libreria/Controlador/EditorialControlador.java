@@ -33,13 +33,14 @@ public class EditorialControlador {
         
         try {
             servE.crearEditorial(nombre);
-             return "index.html";
+            
         } catch (ExcepcionLibreria ex) {
             modelo.put("error", ex.getMessage());
 
             return "insertarEditorial.html";
         }
-
+        modelo.put("mensaje","La editorial se registró de manera satisfactoria.");
+        return "exito.html";
        
     }
 
