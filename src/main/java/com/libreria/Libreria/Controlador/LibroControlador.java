@@ -5,8 +5,12 @@
  */
 package com.libreria.Libreria.Controlador;
 
+import com.libreria.Libreria.Entidades.Autor;
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
+import com.libreria.Libreria.Repository.AutorRepo;
+import com.libreria.Libreria.Servicio.AutorServicio;
 import com.libreria.Libreria.Servicio.LibroServicio;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,25 +24,42 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/libro")
 public class LibroControlador {
+
     @Autowired
-    private LibroServicio servL; 
-      @GetMapping("/registro")
+    private LibroServicio servL;
+
+    @GetMapping("/registro")
     public String registroLibro() {
         return "registroLibro.html";
-    }       
+    }
+
     @PostMapping("/registro")
-    public String registroLibro(ModelMap m,@RequestParam Long isbn,@RequestParam String titulo,@RequestParam Integer anio,
-            @RequestParam Integer ejemplares,@RequestParam Integer ejemplaresPrestados,
-            @RequestParam Integer ejemplaresRestantes, @RequestParam String idAutor,@RequestParam String idEditorial){
-        
+    public String registroLibro(ModelMap m, @RequestParam Long isbn,
+            @RequestParam String titulo, @RequestParam Integer anio,
+            @RequestParam Integer ejemplares,
+            @RequestParam Integer ejemplaresPrestados,
+            @RequestParam Integer ejemplaresRestantes,
+            @RequestParam String autor, @RequestParam String editorial) {
+
         try {
-            servL.crearLibro(isbn, titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, idAutor, idEditorial);
+
+            servL.crearLibro(isbn, titulo, anio, ejemplares,
+                    ejemplaresPrestados, ejemplaresRestantes,
+                    autor, editorial);
             return "index.html";
         } catch (ExcepcionLibreria ex) {
             m.put("error", ex.getMessage());
+            m.put("isbn", isbn);
+            m.put("titulo",titulo);
+            m.put("anio", anio);
+            m.put("ejemplares", ejemplares);
+            m.put("ejemplaresPrestados", ejemplaresPrestados);
+            m.put("ejemplaresRestantes", ejemplaresRestantes);
+            m.put("autor", autor);
+            m.put("editorial", editorial);
             return "registroLibro.html";
         }
-        
+
     }
-    
+
 }

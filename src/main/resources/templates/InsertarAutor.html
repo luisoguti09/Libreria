@@ -7,6 +7,7 @@ and open the template in the editor.
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Librería</title>
+        <link rel="icon" href="../Imagenes/i.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -26,7 +27,7 @@ and open the template in the editor.
                             Libros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="registroLibro">Registrar</a>
+                            <a class="dropdown-item" th:href="@{/libro/registro}">Registrar</a>
                             <a class="dropdown-item" href="libros.html">Mostrar</a>
 
                         </div>
@@ -46,7 +47,7 @@ and open the template in the editor.
                             Editoriales
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Registrar</a>
+                            <a class="dropdown-item" th:href="@{/editorial/registro}">Registrar</a>
                             <a class="dropdown-item" href="editoriales.html">Mostrar</a>
 
                         </div>
@@ -57,14 +58,14 @@ and open the template in the editor.
             </nav>
         </header>
         <div class="cont_form">
-            <div> <h2>Cargar Autor</h2> </div>
-            <form th:action="@{/autor/registro}" method="POST" class="form_aut">
+            <h2 class="subt">Cargar Autor</h2> 
+            <form th:action="@{/autor/registro}" method="POST" class="formulario">
                 <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
 
                 <label for="nombre">Nombre</label>
-                <input type="text"  name="nombre">
+                <input type="text"  name="nombre" ><br>               
 
-                <button type="submit">Guardar</button>
+                <button type="submit" >Guardar</button>
             </form>
         </div>
         <footer>
