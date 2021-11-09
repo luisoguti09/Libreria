@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping ("/Editorial")
+@RequestMapping ("/editorial")
 public class EditorialControlador {
 
     @Autowired(required = false)
@@ -28,7 +28,7 @@ public class EditorialControlador {
         return "insertarEditorial.html";
     }
     
-    @PostMapping("/registrar")
+    @PostMapping("/registro")
     public String registrarEditorial(ModelMap modelo, @RequestParam String nombre){
         
         try {

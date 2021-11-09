@@ -21,49 +21,10 @@ import org.springframework.stereotype.Service;
 public class EditorialServicio {
 
     @Autowired(required = false)
-    private EditorialRepo edit;
+    private EditorialRepo er;
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-    public void crearEditorial(String nombre) throws ExcepcionLibreria {
-        if (nombre.isEmpty() || nombre == null) {
-            throw new ExcepcionLibreria("Tenes que ingresar los datos pedidos salamin/a");
-        }
-        Editorial editor = new Editorial();
-        editor.setNombre(nombre);
-        editor.setAlta(true);
-        edit.save(editor);
-    }
-
-    public void modificarEditorial(String nombre, String Id) throws ExcepcionLibreria {
-
-        if (nombre.isEmpty() || nombre == null) {
-            throw new ExcepcionLibreria("Tenes que ingresar los datos pedidos salamin/a");
-        }
-
-        Optional<Editorial> respuesta = edit.findById(Id);
-
-        if (respuesta.isPresent()) {
-            Editorial edi = respuesta.get();
-            edi.setNombre(nombre);
-            edit.save(edi);
-        } else {
-            throw new ExcepcionLibreria("No existe la Editorial ingresada");
-        }
-    }
-
-    public void deshabilitarEditorial(String Id) throws ExcepcionLibreria {
-
-        Optional<Editorial> respuesta = edit.findById(Id);
-        if (respuesta.isPresent()) {
-            Editorial edi = respuesta.get();
-            edi.setAlta(false);
-            edit.save(edi);
-        } else {
-            throw new ExcepcionLibreria("No existe la Editorial ingresada");
-        }
-    }
-    @Autowired
-    private EditorialRepo er;
+    
     
     public void crearEditorial(String nombre) throws ExcepcionLibreria{
 
