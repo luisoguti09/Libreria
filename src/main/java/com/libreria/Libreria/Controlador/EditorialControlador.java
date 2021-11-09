@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping ("/Editorial")
+@RequestMapping ("/editorial")
 public class EditorialControlador {
 
     @Autowired(required = false)
@@ -28,18 +28,19 @@ public class EditorialControlador {
         return "insertarEditorial.html";
     }
     
-    @PostMapping("/registrar")
+    @PostMapping("/registro")
     public String registrarEditorial(ModelMap modelo, @RequestParam String nombre){
         
         try {
             servE.crearEditorial(nombre);
-             return "index.html";
+            
         } catch (ExcepcionLibreria ex) {
             modelo.put("error", ex.getMessage());
 
             return "insertarEditorial.html";
         }
-
+        modelo.put("mensaje","La editorial se registró de manera satisfactoria.");
+        return "exito.html";
        
     }
 

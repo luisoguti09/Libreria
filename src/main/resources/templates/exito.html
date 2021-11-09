@@ -56,70 +56,9 @@
         </header>
 
         <main>
-
-            
-            <div class="cont_form_libro">
-                <h2 class="subt">Cargar Libro</h2>
-            <form th:action="@{/libro/registro}" method="POST" class="formulario">
-                <div class="form-group">
-                    <label for="ISBN">ISBN</label>
-                    <input type="text" class="form-control input_libro" id="ISBN" name="isbn" 
-                           th:value="${isbn}">
-
-                </div>
-                <div class="form-group">
-                    <label for="Titulo">Título</label>
-                    <input type="text" class="form-control input_libro" id="Titulo" name="titulo"
-                           th:value="${titulo}">
-
-                </div>
-                <div class="form-group">
-                    <label for="Anio">Año</label>
-                    <input type="number" class="form-control input_libro" id="Anio" name="anio"
-                           th:value="${anio}">
-
-                </div>
-                <div class="form-group">
-                    <label for="Ejemplares">Ejemplares</label>
-                    <input type="number" class="form-control input_libro" id="Ejemplares" name="ejemplares"
-                           th:value="${ejemplares}">
-
-                </div>
-                <div class="form-group">
-                    <label for="EjemplaresPrestados">Ejemplares Prestados</label>
-                    <input type="number" class="form-control input_libro" id="EjemplaresPrestados" name="ejemplaresPrestados"
-                           th:value="${ejemplaresPrestados}">
-
-                </div>
-                <div class="form-group">
-                    <label for="EjemplaresRestantes">Ejemplares Restantes</label>
-                    <input type="number" class="form-control input_libro" id="EjemplaresRestantes" name="ejemplaresRestantes"
-                           th:value="${ejemplaresRestantes}">
-
-                </div>
-                <div class="form-group">
-                    <label for="idAutor">Autor</label>
-                    <!-- <input type="text" class="form-control" id="idAutor" name="idAutor">
-                    -->
-                    <select name="autor" class="form-control input_libro">
-                        <option disabled selected>Seleccione un autor</option>
-                        <option th:each="autor : ${autores}"
-                                th:value="${autor.id}" 
-                                th:text="${autor.nombre}"/>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="idEditorial"> Id Editorial</label>
-                    <input type="text" class="form-control input_libro" id="idEditorial" name="idEditorial">
-
-                </div>
-
-
-
-
-                <button type="submit" >Guardar</button>
-            </form> 
-                </div>
+            <div class="exito">
+                <p th:text="${mensaje}"></p>
+            </div>
         </main>
         <footer>
             <p>@Copyright 2021</p>
@@ -134,4 +73,3 @@
     </body>
 
 </html>
-

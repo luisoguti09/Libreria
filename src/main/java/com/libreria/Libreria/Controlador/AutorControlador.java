@@ -1,8 +1,10 @@
 
 package com.libreria.Libreria.Controlador;
 
+import com.libreria.Libreria.Entidades.Autor;
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
 import com.libreria.Libreria.Servicio.AutorServicio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,10 +32,22 @@ public class AutorControlador {
             servA.crearAutor(nombre);
         } catch (ExcepcionLibreria ex) {
             modelo.put("error",ex.getMessage());
-           
+            
             return "InsertarAutor.html";
         }
 
-        return "index.html";
+        modelo.put("mensaje","El autor se registró de manera satisfactoria.");
+        return "exito.html";
     }
+    /*
+     @PostMapping("/registro")
+    public String lista(ModelMap modelo, @RequestParam String nombre) {
+
+        List<Autor> autores = servA.buscarPorNombre(nombre);
+
+        modelo.addAttribute("autores", autores);
+
+        //modelo.put("exito", "Registro exitoso");
+        return "cargar-autor";
+    }*/
 }

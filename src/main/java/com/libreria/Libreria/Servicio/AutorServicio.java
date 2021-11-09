@@ -8,9 +8,11 @@ package com.libreria.Libreria.Servicio;
 import com.libreria.Libreria.Entidades.Autor;
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
 import com.libreria.Libreria.Repository.AutorRepo;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AutorServicio {
@@ -56,4 +58,10 @@ public class AutorServicio {
             throw new ExcepcionLibreria("No existe el autor ingresado");
         }
     }
+    
+    /*
+      @Transactional(readOnly = true)
+	public List<Autor> buscarPorNombre(String nombre) {
+		return autorcito.findByNombreContainingOrderByNombre(nombre);
+	}*/
 }
