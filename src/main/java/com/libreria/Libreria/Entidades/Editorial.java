@@ -27,37 +27,26 @@ public class Editorial {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * @return the nombre
-     */
+   
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
+   
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the alta
-     */
+   
     public boolean isAlta() {
         return alta;
     }
 
-    /**
-     * @param alta the alta to set
-     */
+
     public void setAlta(boolean alta) {
         this.alta = alta;
     }

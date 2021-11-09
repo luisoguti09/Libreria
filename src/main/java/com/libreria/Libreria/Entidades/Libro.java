@@ -32,22 +32,6 @@ public class Libro {
     @ManyToOne
    private Editorial editorial;
 
-    public Libro() {
-    }
-
-    public Libro(String id, Long isbn, String titulo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Boolean alta, Autor autor, Editorial editorial) {
-        this.id = id;
-        this.isbn = isbn;
-        this.titulo = titulo;
-        this.anio = anio;
-        this.ejemplares = ejemplares;
-        this.ejemplaresPrestados = ejemplaresPrestados;
-        this.ejemplaresRestantes = ejemplaresRestantes;
-        this.alta = alta;
-        this.autor = autor;
-        this.editorial = editorial;
-    }
-
     public String getId() {
         return id;
     }

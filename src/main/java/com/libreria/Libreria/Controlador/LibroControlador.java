@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/libro")
@@ -34,6 +35,7 @@ public class LibroControlador {
     }
 
     @PostMapping("/registro")
+<<<<<<< HEAD
     public String registroLibro(ModelMap m, @RequestParam Long isbn,
             @RequestParam String titulo, @RequestParam Integer anio,
             @RequestParam Integer ejemplares,
@@ -41,6 +43,13 @@ public class LibroControlador {
             @RequestParam Integer ejemplaresRestantes,
             @RequestParam String autor, @RequestParam String editorial) {
 
+=======
+    public String registroLibro(ModelMap m,@RequestParam Long isbn,@RequestParam String titulo,@RequestParam Integer anio,
+
+            @RequestParam Integer ejemplares,@RequestParam Integer ejemplaresPrestados,
+            @RequestParam Integer ejemplaresRestantes, @RequestParam String idAutor,@RequestParam String idEditorial){
+        
+>>>>>>> 3267d128a44ff9c3607347f1a28ad6c10679b0bf
         try {
 
             servL.crearLibro(isbn, titulo, anio, ejemplares,

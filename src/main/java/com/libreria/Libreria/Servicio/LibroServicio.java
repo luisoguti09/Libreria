@@ -75,6 +75,7 @@ public class LibroServicio {
         librito.setEjemplares(ejemplares);
         librito.setEjemplaresPrestados(ejemplaresPrestados);
         librito.setEjemplaresRestantes(ejemplaresRestantes);
+        librito.setAlta(true);
         librito.setAutor(autorcito);
         librito.setEditorial(edi);
         
