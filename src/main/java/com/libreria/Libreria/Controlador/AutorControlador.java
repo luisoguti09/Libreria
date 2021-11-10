@@ -68,5 +68,29 @@ public class AutorControlador {
        return "exito.html";
    }
    
-   
+   @GetMapping("/baja/{id}")
+	public String baja(ModelMap mod,@PathVariable String id) {
+				
+		try {
+			servA.darBajaAutor(id);
+			return "redirect:/autor/mostrar";
+		} catch (ExcepcionLibreria e) {
+                        
+			return "redirect:/autor/mostrar";
+		}
+		
+	}
+	
+   @GetMapping("/alta/{id}")
+	public String alta(ModelMap mod,@PathVariable String id) {
+				
+		try {
+			servA.darAltaAutor(id);
+			return "redirect:/autor/mostrar";
+		} catch (ExcepcionLibreria e) {
+                        
+			return "redirect:/autor/mostrar";
+		}
+		
+	}
 }

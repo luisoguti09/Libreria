@@ -76,6 +76,31 @@ public class EditorialControlador {
        return "exito.html";
    }
    
+   @GetMapping("/baja/{id}")
+	public String baja(ModelMap mod,@PathVariable String id) {
+				
+		try {
+			servE.darBajaEditorial(id);
+			return "redirect:/editorial/mostrar";
+		} catch (ExcepcionLibreria e) {
+                        
+			return "redirect:/editorial/mostrar";
+		}
+		
+	}
+	
+   @GetMapping("/alta/{id}")
+	public String alta(ModelMap mod,@PathVariable String id) {
+				
+		try {
+			servE.darAltaEditorial(id);
+			return "redirect:/editorial/mostrar";
+		} catch (ExcepcionLibreria e) {
+                        
+			return "redirect:/editorial/mostrar";
+		}
+		
+	}
     
     
     

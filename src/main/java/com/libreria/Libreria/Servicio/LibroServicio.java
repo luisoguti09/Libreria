@@ -111,7 +111,7 @@ public class LibroServicio {
 
     }
     
-    public void eliminarLibro(String id,String idAutor, String idEditorial) throws ExcepcionLibreria{
+    public void bajaLibro(String id,String idAutor, String idEditorial) throws ExcepcionLibreria{
         
         Optional<Libro> respuesta = libR.findById(id);
         if(respuesta.isPresent()){
@@ -120,6 +120,28 @@ public class LibroServicio {
                 if(librito.getEditorial().getId().equals(idEditorial)){
                     
                     librito.setAlta(false);
+                   
+                    libR.save(librito);
+                }else{
+                    throw new ExcepcionLibreria("No coincide la Editorial ingresada");
+                }   
+            }else{
+                throw new ExcepcionLibreria("No coincide el Autor ingresado");
+            } 
+        }else{
+            throw new ExcepcionLibreria("No Existe el libro segun el Id ingresado");
+        }  
+    }
+    
+    public void altaLibro(String id,String idAutor, String idEditorial) throws ExcepcionLibreria{
+        
+        Optional<Libro> respuesta = libR.findById(id);
+        if(respuesta.isPresent()){
+            Libro librito = respuesta.get();
+            if(librito.getAutor().getId().equals(idAutor)){
+                if(librito.getEditorial().getId().equals(idEditorial)){
+                    
+                    librito.setAlta(true);
                    
                     libR.save(librito);
                 }else{
