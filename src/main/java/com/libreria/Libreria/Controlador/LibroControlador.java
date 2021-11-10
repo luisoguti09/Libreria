@@ -22,6 +22,7 @@ public class LibroControlador {
     @Autowired
     private LibroServicio servL;
 
+    
     @GetMapping("/registro")
     public String registroLibro() {
         return "registroLibro.html";
