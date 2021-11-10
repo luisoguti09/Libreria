@@ -3,12 +3,14 @@ package com.libreria.Libreria.Controlador;
 
 import com.libreria.Libreria.Entidades.Autor;
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
+import com.libreria.Libreria.Repository.AutorRepo;
 import com.libreria.Libreria.Servicio.AutorServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,9 @@ public class AutorControlador {
 
     @Autowired
     private AutorServicio servA;
+    
+    @Autowired
+    private AutorRepo auR;
 
     @GetMapping("/registro")
     public String registroLibro() {
@@ -39,15 +44,29 @@ public class AutorControlador {
         modelo.put("mensaje","El autor se registró de manera satisfactoria.");
         return "exito.html";
     }
-    /*
-     @PostMapping("/registro")
-    public String lista(ModelMap modelo, @RequestParam String nombre) {
-
-        List<Autor> autores = servA.buscarPorNombre(nombre);
-
-        modelo.addAttribute("autores", autores);
-
-        //modelo.put("exito", "Registro exitoso");
-        return "cargar-autor";
-    }*/
+   @GetMapping("/mostrar")
+   public String mostrarAutor(ModelMap mod){
+       List<Autor> autores = auR.findAll();
+       mod.put("autores", autores);
+       return "autores";
+   }
+   
+   @GetMapping("/modificar/{id}")
+   public String modificarAutor(ModelMap model, @PathVariable String id){
+       model.put("autor", auR.getOne(id));
+       return "modificarAutor.html";   
+   }
+   
+   @PostMapping("/modificar/{id}")
+   public String modificarAutor(ModelMap mod,@PathVariable String id, @RequestParam String nombre){
+       try {
+           servA.modificarAutor(nombre, id);
+       } catch (ExcepcionLibreria e) {
+           mod.put("error", e.getMessage());
+       }
+       mod.put("mensaje", "Se modificó el autor exitosamente, te felicito, sos el/la masme, no hay nadie mejor");
+       return "exito.html";
+   }
+   
+   
 }
