@@ -49,8 +49,32 @@ public class EditorialServicio {
             editorial.setNombre(nombre);
             er.save(editorial);
         }else{
-            throw new ExcepcionLibreria("No existe el autor ingresado");
+            throw new ExcepcionLibreria("No existe la editorial ingresado");
         }
     }
    
+     
+     public void darBajaEditorial(String Id) throws ExcepcionLibreria{
+        
+        Optional<Editorial> respuesta = er.findById(Id);
+        if(respuesta.isPresent()){
+            Editorial editorial = respuesta.get();
+            editorial.setAlta(false);
+            er.save(editorial);
+        }else{
+            throw new ExcepcionLibreria("No existe la editorial ingresado");
+        }
+    }
+    
+   public void darAltaEditorial(String Id) throws ExcepcionLibreria{
+        
+        Optional<Editorial> respuesta = er.findById(Id);
+        if(respuesta.isPresent()){
+             Editorial editorial = respuesta.get();
+            editorial.setAlta(true);
+            er.save(editorial);
+        }else{
+            throw new ExcepcionLibreria("No existe la editorial ingresado");
+        }
+    } 
 }

@@ -59,5 +59,15 @@ public class AutorServicio {
         }
     }
     
-    
+   public void darAltaAutor(String Id) throws ExcepcionLibreria{
+        
+        Optional<Autor> respuesta = autorcito.findById(Id);
+        if(respuesta.isPresent()){
+            Autor autor = respuesta.get();
+            autor.setAlta(true);
+            autorcito.save(autor);
+        }else{
+            throw new ExcepcionLibreria("No existe el autor ingresado");
+        }
+    } 
 }
