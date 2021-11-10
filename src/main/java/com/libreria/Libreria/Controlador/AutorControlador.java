@@ -47,8 +47,8 @@ public class AutorControlador {
    @GetMapping("/mostrar")
    public String mostrarAutor(ModelMap mod){
        List<Autor> autores = auR.findAll();
-       mod.put("autores", autores);
-       return "autores";
+       mod.put("autores",autores);
+       return "autores.html";
    }
    
    @GetMapping("/modificar/{id}")

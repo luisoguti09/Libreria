@@ -36,6 +36,21 @@ public class EditorialServicio {
             editorial.setAlta(true);
             er.save(editorial);
     }
-    
+     public void modificarEditorial(String nombre, String Id) throws ExcepcionLibreria{
+      
+        if(nombre.isEmpty()|| nombre == null){
+                throw new ExcepcionLibreria("Tenes que ingresar los datos pedidos salamin/a");
+            }
+        
+        Optional<Editorial> respuesta = er.findById(Id);
+        
+        if(respuesta.isPresent()){
+            Editorial editorial = respuesta.get();
+            editorial.setNombre(nombre);
+            er.save(editorial);
+        }else{
+            throw new ExcepcionLibreria("No existe el autor ingresado");
+        }
+    }
    
 }
