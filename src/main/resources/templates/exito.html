@@ -14,45 +14,45 @@
 
     <body>
         <header>
-            <nav>
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Libros
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/libro/registro}">Registrar</a>
-                            <a class="dropdown-item" href="libros.html">Mostrar</a>
+           <nav>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+             Libros
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/libro/registro}">Registrar</a>
+              <a class="dropdown-item" th:href="@{/libro/mostrar}">Mostrar</a>
+              
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+             Autores
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/autor/registro}">Registrar</a>
+              <a class="dropdown-item" th:href="@{/autor/mostrar}">Mostrar</a>
+              
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+             Editoriales
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/editorial/registro}">Registrar</a>
+              <a class="dropdown-item" th:href="@{/editorial/mostrar}">Mostrar</a>
+              
+            </div>
+          </li>
+        
+      </ul>
 
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Autores
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/autor/registro}">Registrar</a>
-                            <a class="dropdown-item" href="autores.html">Mostrar</a>
-
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Editoriales
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/editorial/registro}">Registrar</a>
-                            <a class="dropdown-item" href="editoriales.html">Mostrar</a>
-
-                        </div>
-                    </li>
-
-                </ul>
-
-            </nav>
+    </nav>
         </header>
 
         <main>

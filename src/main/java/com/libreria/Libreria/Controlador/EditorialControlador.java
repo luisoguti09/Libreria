@@ -5,13 +5,17 @@
  */
 package com.libreria.Libreria.Controlador;
 
+import com.libreria.Libreria.Entidades.Editorial;
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
+import com.libreria.Libreria.Repository.EditorialRepo;
 import com.libreria.Libreria.Servicio.EditorialServicio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +27,9 @@ public class EditorialControlador {
     @Autowired(required = false)
     private EditorialServicio servE;
 
+    @Autowired
+    private EditorialRepo er;
+    
     @GetMapping("/registro")
     public String registroLibro() {
         return "insertarEditorial.html";
@@ -45,7 +52,30 @@ public class EditorialControlador {
     }
 
     
-
+@GetMapping("/mostrar")
+   public String mostrarEditorial(ModelMap mod){
+       List<Editorial> editoriales = er.findAll();
+       mod.put("editoriales",editoriales);
+       return "editoriales.html";
+   }
+   
+   @GetMapping("/modificar/{id}")
+   public String modificarEditorial(ModelMap model,@PathVariable String id){
+       model.put("editorial", er.getOne(id));
+       return "modificarEditorial.html";   
+   }
+   
+   @PostMapping("/modificar/{id}")
+   public String modificarEditorial(ModelMap mod,@PathVariable String id, @RequestParam String nombre){
+       try {
+           servE.modificarEditorial(nombre, id);
+       } catch (ExcepcionLibreria e) {
+           mod.put("error", e.getMessage());
+       }
+       mod.put("mensaje", "Se modificó la editorial exitosamente, te felicito, sos el/la masme, no hay nadie mejor");
+       return "exito.html";
+   }
+   
     
     
     

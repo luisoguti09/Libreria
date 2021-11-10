@@ -31,9 +31,7 @@ public class LibroControlador {
     @Autowired
     private LibroServicio servL;
 
-<<<<<<< HEAD
-    
-=======
+
     @Autowired
     private AutorRepo ar;
 
@@ -43,9 +41,7 @@ public class LibroControlador {
     @Autowired
     private LibroRepo lR;
 
->>>>>>> 4af13d8d262d92ce54284307f7b685a8a2137417
     @GetMapping("/registro")
-
     public String registroLibro(ModelMap modelo) {
         List<Autor> autores = ar.findAll();
         List<Editorial> editoriales = er.findAll();

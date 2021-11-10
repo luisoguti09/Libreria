@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Librería</title>
@@ -9,56 +14,55 @@
         <link rel="stylesheet" href="../Styles/style.css">
 
     </head>
-
     <body>
         <header>
             <nav>
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Libros
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/libro/registro}">Registrar</a>
-                            <a class="dropdown-item" href="libros.html">Mostrar</a>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+             Libros
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/libro/registro}">Registrar</a>
+              <a class="dropdown-item" th:href="@{/libro/mostrar}">Mostrar</a>
+              
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+             Autores
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/autor/registro}">Registrar</a>
+              <a class="dropdown-item" th:href="@{/autor/mostrar}">Mostrar</a>
+              
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+             Editoriales
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/editorial/registro}">Registrar</a>
+              <a class="dropdown-item" th:href="@{/editorial/mostrar}">Mostrar</a>
+              
+            </div>
+          </li>
+        
+      </ul>
 
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Autores
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/autor/registro}">Registrar</a>
-                            <a class="dropdown-item" href="autores.html">Mostrar</a>
-
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Editoriales
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/editorial/registro}">Registrar</a>
-                            <a class="dropdown-item" href="editoriales.html">Mostrar</a>
-
-                        </div>
-                    </li>
-
-                </ul>
-
-            </nav>
+    </nav>
         </header>
         <div class="cont_form">
-            <h2 class="subt">Cargar Autor</h2> 
+            <h2 class="subt">Modificar Autor</h2> 
             <form th:action="@{/autor/modificar/__${id}__}" method="POST" class="formulario">
                 <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
-
+                <input hidden th:value="${id}" name="id">
                 <label for="nombre">Nombre</label>
-                <input type="text"  name="nombre" ><br>               
+                <input type="text"  name="nombre" th:value="${autor.nombre}" ><br>               
 
                 <button type="submit" >Guardar</button>
             </form>

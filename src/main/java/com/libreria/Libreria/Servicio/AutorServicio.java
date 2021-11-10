@@ -59,9 +59,5 @@ public class AutorServicio {
         }
     }
     
-    /*
-      @Transactional(readOnly = true)
-	public List<Autor> buscarPorNombre(String nombre) {
-		return autorcito.findByNombreContainingOrderByNombre(nombre);
-	}*/
+    
 }
