@@ -123,34 +123,33 @@ public class LibroControlador {
         return "exito.html";
     }
 
-    /*
-     @GetMapping("/baja/{id}")
+  
+     @GetMapping("/baja/{id}/{autor}/{editorial}")
 	public String baja(ModelMap mod,@PathVariable String id,
                 @PathVariable String autor,@PathVariable String editorial) {
 				
 		try {
 			servL.bajaLibro(id,autor,editorial);
-			return "redirect:/editorial/mostrar";
+			return "redirect:/libro/mostrar";
 		} catch (ExcepcionLibreria e) {
                         
-			return "redirect:/editorial/mostrar";
+			return "redirect:/libro/mostrar";
 		}
 		
 	}
 	
-   @GetMapping("/alta/{id}")
+   @GetMapping("/alta/{id}/{autor}/{editorial}")
 	public String alta(ModelMap mod,@PathVariable String id,
                 @PathVariable String autor,@PathVariable String editorial) {
 				
 		try {
 			servL.altaLibro(id,autor,editorial);
-			return "redirect:/editorial/mostrar";
+			return "redirect:/libro/mostrar";
 		} catch (ExcepcionLibreria e) {
                         
-			return "redirect:/editorial/mostrar";
+			return "redirect:/libro/mostrar";
 		}
 		
 	}
-    
-    */
+
 }

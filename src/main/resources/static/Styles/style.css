@@ -20,11 +20,7 @@ footer{
     align-items: center;
     justify-content: center;
 }
-/*
-body{
-    background: rgb(6,41,37);
-    background: radial-gradient(circle, rgba(6,41,37,1) 0%, rgba(184,225,221,1) 61%, rgba(255,255,255,1) 100%);
-}*/
+
 .cont_form{
     height: 80vh;
     color:white;
@@ -79,9 +75,19 @@ input:focus{
 .input_libro{
     width: 80vw !important; 
 }
+.contenedorycuchillo{
+   display: grid;
+   grid-template-areas:"icono"
+                       "mensaje";
+   
+}
 
+.icono{
+    grid-area:icono;
+}
 
 .exito{
+    grid-area:mensaje;
     margin: auto;
     height: 80vh; 
     display: flex;
