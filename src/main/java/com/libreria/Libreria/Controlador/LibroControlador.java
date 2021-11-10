@@ -5,12 +5,21 @@
  */
 package com.libreria.Libreria.Controlador;
 
+import com.libreria.Libreria.Entidades.Autor;
+import com.libreria.Libreria.Entidades.Editorial;
+import com.libreria.Libreria.Entidades.Libro;
 import com.libreria.Libreria.Excepciones.ExcepcionLibreria;
+import com.libreria.Libreria.Repository.AutorRepo;
+import com.libreria.Libreria.Repository.EditorialRepo;
+import com.libreria.Libreria.Repository.LibroRepo;
+import com.libreria.Libreria.Servicio.EditorialServicio;
 import com.libreria.Libreria.Servicio.LibroServicio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +31,22 @@ public class LibroControlador {
     @Autowired
     private LibroServicio servL;
 
+    @Autowired
+    private AutorRepo ar;
+
+    @Autowired
+    private EditorialRepo er;
+
+    @Autowired
+    private LibroRepo lR;
+
     @GetMapping("/registro")
-    public String registroLibro() {
+
+    public String registroLibro(ModelMap modelo) {
+        List<Autor> autores = ar.findAll();
+        List<Editorial> editoriales = er.findAll();
+        modelo.put("editoriales", editoriales);
+        modelo.put("autores", autores);
         return "registroLibro.html";
     }
 
@@ -54,6 +77,49 @@ public class LibroControlador {
             return "registroLibro.html";
         }
         m.put("mensaje", "El libro se registró de manera satisfactoria.");
+        return "exito.html";
+    }
+
+    @GetMapping("/mostrar")
+    public String mostrarLibros(ModelMap mod) {
+        List<Libro> libros = lR.findAll();
+        mod.put("libros", libros);
+        return "libros.html";
+    }
+
+    @GetMapping("/modificar/{id}")
+    public String modificarLibro(ModelMap model, @PathVariable String id) {
+        List<Autor> autores = ar.findAll();
+        List<Editorial> editoriales = er.findAll();
+        model.put("editoriales", editoriales);
+        model.put("autores", autores);
+        model.put("libro", lR.getOne(id));
+        return "modificarLibro.html";
+    }
+
+    @PostMapping("/modificar/{id}")
+    public String modificarLibros(ModelMap mod, @PathVariable String id, @RequestParam Long isbn,
+            @RequestParam String titulo, @RequestParam Integer anio,
+            @RequestParam Integer ejemplares,
+            @RequestParam Integer ejemplaresPrestados,
+            @RequestParam Integer ejemplaresRestantes,
+            @RequestParam String autor, @RequestParam String editorial) {
+        try {
+            servL.modificarLibro(id, isbn, titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, autor, editorial);
+
+        } catch (ExcepcionLibreria ex) {
+            mod.put("error", ex.getMessage());
+            mod.put("isbn", isbn);
+            mod.put("titulo", titulo);
+            mod.put("anio", anio);
+            mod.put("ejemplares", ejemplares);
+            mod.put("ejemplaresPrestados", ejemplaresPrestados);
+            mod.put("ejemplaresRestantes", ejemplaresRestantes);
+            mod.put("autor", autor);
+            mod.put("editorial", editorial);
+            return "modificarLibro.html";
+        }
+        mod.put("mensaje", "El libro se modificó de manera satisfactoria.");
         return "exito.html";
     }
 
