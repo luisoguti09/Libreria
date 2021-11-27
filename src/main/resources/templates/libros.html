@@ -91,8 +91,8 @@
                                 <i th:unless="${libro.alta}" class="fas fa-ban" style="color:red;border:none;font-size: 1.5rem"></i>
                             </td>
                             <td style="display: flex;"> <a th:href="@{/libro/modificar/__${libro.id}__}">Modificar</a>
-                                <a th:href="@{/libro/baja/__${libro.id}__}">Baja</a>
-                                <a th:href="@{/libro/alta/__${libro.id}__}">Alta</a></td> 
+                                <a th:href="@{/libro/baja/__${libro.id}__/__${libro.autor.id}__/__${libro.editorial.id}__}">Baja</a>
+                                <a th:href="@{/libro/alta/__${libro.id}__/__${libro.autor.id}__/__${libro.editorial.id}__}">Alta</a></td> 
                         </tr>
 
                     </tbody>
