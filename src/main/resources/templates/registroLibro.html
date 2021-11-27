@@ -59,68 +59,47 @@
 
             
             <div class="cont_form_libro">
-                <h2 class="subt">Cargar Libro</h2>
+                <h2 class="subt">Cargar cliente</h2>
                 
-            <form th:action="@{/libro/registro}" method="POST" class="formulario">
+            <form th:action="@{/cliente/registro}" method="POST" class="formulario">
                  <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
                 <div class="form-group">
-                    <label for="ISBN">ISBN</label>
-                    <input type="text" class="form-control input_libro" id="ISBN" name="isbn" 
-                           th:value="${isbn}">
+                    <label for="Nombre">Nombre</label>
+                    <input type="text" class="form-control input_libro" id="nombre" name="nombre" 
+                           th:value="${nombre}">
 
                 </div>
                 <div class="form-group">
-                    <label for="Titulo">Título</label>
-                    <input type="text" class="form-control input_libro" id="Titulo" name="titulo"
-                           th:value="${titulo}">
+                    <label for="Apellido">Apellido</label>
+                    <input type="text" class="form-control input_libro" id="apellido" name="apellido"
+                           th:value="${apellido}">
 
                 </div>
                 <div class="form-group">
-                    <label for="Anio">Año</label>
-                    <input type="number" class="form-control input_libro" id="Anio" name="anio"
-                           th:value="${anio}">
+                    <label for="Documento">Documento</label>
+                    <input type="number" class="form-control input_libro" id="documento" name="documento"
+                           th:value="${documento}">
 
                 </div>
                 <div class="form-group">
-                    <label for="Ejemplares">Ejemplares</label>
-                    <input type="number" class="form-control input_libro" id="Ejemplares" name="ejemplares"
-                           th:value="${ejemplares}">
+                    <label for="Telefono">Telefono</label>
+                    <input type="text" class="form-control input_libro" id="telefono" name="telefono"
+                           th:value="${telefono}">
 
                 </div>
                 <div class="form-group">
-                    <label for="EjemplaresPrestados">Ejemplares Prestados</label>
-                    <input type="number" class="form-control input_libro" id="EjemplaresPrestados" name="ejemplaresPrestados"
-                           th:value="${ejemplaresPrestados}">
+                    <label for="Pass1">Pass1</label>
+                    <input type="text" class="form-control input_libro" id="pass1" name="pass1"
+                           th:value="${pass1}">
 
                 </div>
                 <div class="form-group">
-                    <label for="EjemplaresRestantes">Ejemplares Restantes</label>
-                    <input type="number" class="form-control input_libro" id="EjemplaresRestantes" name="ejemplaresRestantes"
-                           th:value="${ejemplaresRestantes}">
+                    <label for="Pass2">Pass2</label>
+                    <input type="text" class="form-control input_libro" id="pass2" name="pass2"
+                           th:value="${pass2}">
 
                 </div>
-                <div class="form-group">
-                    <label for="idAutor">Autor</label>
-                    <!-- <input type="text" class="form-control" id="idAutor" name="idAutor">
-                    -->
-                    <select name="autor" class="form-control input_libro">
-                        <option disabled selected>Seleccione un autor</option>
-                        <option th:each="autor : ${autores}"
-                                th:value="${autor.id}" 
-                                th:text="${autor.nombre}"/>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="idEditorial">Editorial</label>
-                    
-                    <select name="editorial" class="form-control input_libro">
-                        <option disabled selected>Seleccione una Editorial</option>
-                        <option th:each="editorial : ${editoriales}"
-                                th:value="${editorial.id}" 
-                                th:text="${editorial.nombre}"/>
-                    </select>
-
-                </div>
+                
 
 
 
