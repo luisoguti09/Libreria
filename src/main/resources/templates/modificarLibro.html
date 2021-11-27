@@ -62,6 +62,7 @@
                 <h2 class="subt">Cargar Libro</h2>
                 
             <form th:action="@{/libro/modificar/__${libro.id}__}" method="POST" class="formulario">
+                <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
                 <input hidden th:value="${id}" name="id">
                 <div class="form-group">
                     <label for="ISBN">ISBN</label>
